@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JotAThought">
-        <activity android:name=".ui.activity.JournalList">
+        <activity android:name=".ui.activity.JournalList"></activity>
+        <activity android:name=".ui.activity.SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.NewJournalEntryActivity"/>
+        <activity android:name=".ui.activity.NewJournalEntryActivity" />
     </application>
 
 </manifest>
