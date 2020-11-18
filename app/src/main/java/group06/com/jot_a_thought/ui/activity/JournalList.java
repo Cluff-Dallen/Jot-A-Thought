@@ -2,7 +2,9 @@ package group06.com.jot_a_thought.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,6 +20,8 @@ import java.util.List;
 import group06.com.jot_a_thought.R;
 import group06.com.jot_a_thought.dao.JournalDAO;
 
+
+//testing
 public class JournalList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,8 +29,8 @@ public class JournalList extends AppCompatActivity {
         //Toast.makeText(this, "Oi Jales", Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_journal_list);
 
-        FloatingActionButton bottonNewJournal = findViewById(R.id.activity_journal_list_fab_new_journal);
-        bottonNewJournal.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton buttonNewJournal = findViewById(R.id.activity_journal_list_fab_new_journal);
+        buttonNewJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(JournalList.this, NewJournalEntryActivity.class));
@@ -40,9 +44,24 @@ public class JournalList extends AppCompatActivity {
 
         JournalDAO dao = new JournalDAO();
 
+        String path = getExternalFilesDir(null).toString();
+
         ListView journalEntries = findViewById(R.id.activity_journal_list_listview);
+
         journalEntries.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
-                dao.allJounals()));
+                dao.allJournals(path)));
+
+        journalEntries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedJournal = (String) parent.getItemAtPosition(position);
+                Log.i("On ListView click", selectedJournal);
+                Intent intent = new Intent(JournalList.this, JournalEntryActivity.class);
+                intent.putExtra("JournalTitle", selectedJournal);
+                startActivity(intent);
+            }
+        });
+
     }
 }

@@ -1,18 +1,22 @@
 package group06.com.jot_a_thought.dao;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
-import group06.com.jot_a_thought.model.Journal;
+public class JournalDAO extends AppCompatActivity {
 
-public class JournalDAO {
 
-    private final static List<Journal> journals = new ArrayList<>();
-    public void save(Journal journal) {
-        journals.add(journal);
-    }
-
-    public List<Journal> allJounals() {
-        return new ArrayList<>(journals);
+    public ArrayList<String> allJournals(String path) {
+        File directory = new File(path);
+        File[] files = directory.listFiles();
+        ArrayList<String> journalsNames = new ArrayList<String>();
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                journalsNames.add(files[i].getName());
+            }
+        }
+        return journalsNames;
     }
 }

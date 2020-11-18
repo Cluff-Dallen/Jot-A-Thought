@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.NewJournalEntryActivity"
-    android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/activity_journal_list_title"
+        android:id="@+id/activity_journal_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:editable="false"
         android:hint="Enter your journal title"
         android:inputType="textPersonName" />
 
-    <EditText android:id="@+id/activity_journal_list_entry"
+    <EditText
+        android:id="@+id/activity_journal_entry"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="Start writing your journal"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/activity_journal_list_save_button"
+        android:id="@+id/activity_journal_lsave_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:onClick="onClick"
         android:text="Save" />
-
 </LinearLayout>
