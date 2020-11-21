@@ -18,8 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.NewJournalEntryActivity"/>
-        <activity android:name=".ui.activity.JournalEntryActivity"/>
+        <activity android:name=".ui.activity.NewJournalEntryActivity" android:parentActivityName=".ui.activity.JournalList"/>
+        <activity android:name=".ui.activity.JournalEntryActivity" android:parentActivityName=".ui.activity.JournalList"/>
     </application>
 
 </manifest>

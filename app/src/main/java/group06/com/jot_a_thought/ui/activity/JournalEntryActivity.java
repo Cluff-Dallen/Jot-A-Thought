@@ -87,5 +87,12 @@ public class JournalEntryActivity extends AppCompatActivity {
 
         finish();
     }
+    public void Delete(View view){
+        EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
+        EditText journlTitle = (EditText) findViewById(R.id.activity_journal_title);
+        journal.getText().clear();
+        
+
+    }
 }
 
