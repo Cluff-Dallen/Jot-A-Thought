@@ -1,6 +1,5 @@
 package group06.com.jot_a_thought.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -8,14 +7,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import group06.com.jot_a_thought.R;
 
@@ -30,7 +29,6 @@ public class JournalEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_entry);
-
         title = getIntent().getStringExtra("JournalTitle");
         try {
             readFile();
@@ -94,5 +92,6 @@ public class JournalEntryActivity extends AppCompatActivity {
         
 
     }
+
 }
 

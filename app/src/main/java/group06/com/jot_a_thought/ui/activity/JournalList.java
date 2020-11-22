@@ -6,16 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import group06.com.jot_a_thought.R;
 import group06.com.jot_a_thought.dao.JournalDAO;
@@ -26,8 +25,23 @@ public class JournalList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Toast.makeText(this, "Oi Jales", Toast.LENGTH_SHORT).show();
+
         setContentView(R.layout.activity_journal_list);
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    System.out.println("Hello");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                } else {
+                    System.out.println("Good Bye!");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+                }
+            }
+        });
 
         FloatingActionButton buttonNewJournal = findViewById(R.id.activity_journal_list_fab_new_journal);
         buttonNewJournal.setOnClickListener(new View.OnClickListener() {
