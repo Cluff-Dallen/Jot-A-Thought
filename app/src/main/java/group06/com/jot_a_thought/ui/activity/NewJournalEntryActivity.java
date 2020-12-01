@@ -17,6 +17,7 @@ public class NewJournalEntryActivity extends AppCompatActivity {
 
     EditText newJournalEntry;
     EditText newTitle;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class NewJournalEntryActivity extends AppCompatActivity {
             newTitle = findViewById(R.id.activity_journal_list_title);
 
             String journalEntry = newJournalEntry.getText().toString();
-            String title = newTitle.getText().toString();
+            title = newTitle.getText().toString();
 
             File file = new File(getExternalFilesDir(null),title);
             file.createNewFile();
@@ -50,10 +51,11 @@ public class NewJournalEntryActivity extends AppCompatActivity {
             finish();
         }
         public void Delete(View view){
-        EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
-        EditText journlTitle = (EditText) findViewById(R.id.activity_journal_title);
-        journal.getText().clear();
-
-
+            finish();
+            /*
+            EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
+            EditText journalTitle = (EditText) findViewById(R.id.activity_journal_title);
+            journal.getText().clear();
+             */
         }
 }

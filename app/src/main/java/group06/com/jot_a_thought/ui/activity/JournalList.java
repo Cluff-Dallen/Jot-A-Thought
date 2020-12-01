@@ -70,9 +70,10 @@ public class JournalList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedJournal = (String) parent.getItemAtPosition(position);
-                Log.i("On ListView click", selectedJournal);
+                String title = selectedJournal.split("\n")[0];
+                Log.i("On ListView click", title);
                 Intent intent = new Intent(JournalList.this, JournalEntryActivity.class);
-                intent.putExtra("JournalTitle", selectedJournal);
+                intent.putExtra("JournalTitle", title);
                 startActivity(intent);
             }
         });

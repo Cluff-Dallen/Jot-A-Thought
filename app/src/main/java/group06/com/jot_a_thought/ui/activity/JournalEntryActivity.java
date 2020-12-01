@@ -1,5 +1,6 @@
 package group06.com.jot_a_thought.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -15,6 +17,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.text.SimpleDateFormat;
 
 import group06.com.jot_a_thought.R;
 
@@ -63,6 +70,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         screenJournalEntry.setText(journalEntry);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onClick(View v) throws IOException {
         sJournalEntry = findViewById(R.id.activity_journal_entry);
         sTitle = findViewById(R.id.activity_journal_title);
@@ -71,6 +79,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         String title = sTitle.getText().toString();
 
         File file = new File(getExternalFilesDir(null),title);
+
 
         try {
             FileWriter writer = new FileWriter(file);
@@ -86,10 +95,19 @@ public class JournalEntryActivity extends AppCompatActivity {
         finish();
     }
     public void Delete(View view){
+        /*
         EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
-        EditText journlTitle = (EditText) findViewById(R.id.activity_journal_title);
+        EditText journalTitle = (EditText) findViewById(R.id.activity_journal_title);
         journal.getText().clear();
-        
+         */
+
+        File file = new File(getExternalFilesDir(null),title);
+        if (file.delete()) {
+            System.out.println("Deleted the file: " + file.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+        finish();
 
     }
 
