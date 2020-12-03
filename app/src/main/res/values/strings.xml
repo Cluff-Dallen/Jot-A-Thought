@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Jot-A-Thought</string>
     <string name="add_button">add_button</string>
+    <string name="jot_a_thought">Jot-A-Thought</string>
+    <string name="todo">TODO</string>
 </resources>
