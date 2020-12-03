@@ -20,7 +20,8 @@
         android:layout_margin="5dp"
         android:hint="Start writing your journal"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        android:background="@null"/>
 
     <Button
         android:id="@+id/activity_journal_list_save_button"
