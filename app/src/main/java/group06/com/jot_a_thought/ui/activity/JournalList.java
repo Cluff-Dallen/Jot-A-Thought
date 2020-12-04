@@ -3,6 +3,8 @@ package group06.com.jot_a_thought.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -27,7 +30,7 @@ public class JournalList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_journal_list);
-        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+        /*ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -41,7 +44,7 @@ public class JournalList extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
 
         FloatingActionButton buttonNewJournal = findViewById(R.id.activity_journal_list_fab_new_journal);
         buttonNewJournal.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +53,24 @@ public class JournalList extends AppCompatActivity {
                 startActivity(new Intent(JournalList.this, NewJournalEntryActivity.class));
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_journal_list_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.activity_journal_list_menu_dark_mode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        if (itemId == R.id.activity_journal_list_menu_white_mode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

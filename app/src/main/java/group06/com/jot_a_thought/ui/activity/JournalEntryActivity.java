@@ -4,10 +4,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +47,50 @@ public class JournalEntryActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_journal_entry_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.activity_journal_list_menu_save) {
+            //readFile();
+            sJournalEntry = findViewById(R.id.activity_journal_entry);
+            sTitle = findViewById(R.id.activity_journal_title);
+
+            String journalEntry = sJournalEntry.getText().toString();
+            String title = sTitle.getText().toString();
+
+            File file = new File(getExternalFilesDir(null),title);
+
+
+            try {
+                FileWriter writer = new FileWriter(file);
+                writer.write(journalEntry);
+                writer.flush();
+                writer.close();
+                Log.i("Saved in Journal Entry", "File Saved");
+            } catch (IOException e) {
+                Log.i("Saving in Journal Entry", "Error file not saved");
+                e.printStackTrace();
+            }
+
+            finish();
+        } else if (itemId == R.id.activity_journal_list_menu_delete) {
+            File file = new File(getExternalFilesDir(null),title);
+            if (file.delete()) {
+                System.out.println("Deleted the file: " + file.getName());
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     void readFile() throws FileNotFoundException {
         TextView screenTitle = findViewById(R.id.activity_journal_title);
         screenTitle.setText(title);
@@ -70,7 +117,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         screenJournalEntry.setText(journalEntry);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    /*@RequiresApi(api = Build.VERSION_CODES.O)
     public void onClick(View v) throws IOException {
         sJournalEntry = findViewById(R.id.activity_journal_entry);
         sTitle = findViewById(R.id.activity_journal_title);
@@ -93,7 +140,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         }
 
         finish();
-    }
+    }*/
     public void Delete(View view){
         /*
         EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
