@@ -60,7 +60,7 @@
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <ToggleButton
+    <!--<ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
@@ -80,5 +80,5 @@
         android:textOff="DAY"
         android:textOn="NIGHT"
         android:textSize="11dp" />
-
+-->
 </RelativeLayout>

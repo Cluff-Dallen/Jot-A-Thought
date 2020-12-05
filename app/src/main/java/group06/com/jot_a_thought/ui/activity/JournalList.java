@@ -30,7 +30,7 @@ public class JournalList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_journal_list);
-        /*ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+       /* ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
