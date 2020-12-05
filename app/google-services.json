@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "45239184302",
+    "project_id": "jot-a-thought",
+    "storage_bucket": "jot-a-thought.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45239184302:android:1a3b97b57d4d21153b763f",
+        "android_client_info": {
+          "package_name": "group06.com.jot_a_thought"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45239184302-upigkb3psknaglml7ookjens7lcnveed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp6U1BqXp0ogPzgpREDAYo_7fizznyRvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45239184302-upigkb3psknaglml7ookjens7lcnveed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
