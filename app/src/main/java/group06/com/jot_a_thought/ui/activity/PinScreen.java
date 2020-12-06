@@ -3,7 +3,9 @@ package group06.com.jot_a_thought.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.AtomicFile;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +23,10 @@ import group06.com.jot_a_thought.R;
 
 public class PinScreen extends AppCompatActivity{
 
+    private static final int ATTEMPT_LIMIT = 4;
     String pin = "";
     String checkPin = "";
+    int attempts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class PinScreen extends AppCompatActivity{
 
     protected void onResume(){
         super.onResume();
+        attempts = 0;
         FileReader fr = null;
         try {
             fr = new FileReader(new File(getExternalFilesDir(null), "PIN"));
@@ -71,7 +76,9 @@ public class PinScreen extends AppCompatActivity{
 
     private void checkPin() {
         System.out.println(pin);
-        if (pin.length() == 4) {
+        if (pin.length() == 4 && attempts <= ATTEMPT_LIMIT) {
+            attempts += 1;
+            System.out.println(attempts);
             if (pin.equals(checkPin)) {
                 Intent intent = new Intent(PinScreen.this, JournalList.class);
                 startActivity(intent);
@@ -95,9 +102,22 @@ public class PinScreen extends AppCompatActivity{
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(getApplicationContext(), "PIN Incorrect", Toast.LENGTH_SHORT).show();
-                pin = "";
+                if (attempts <= ATTEMPT_LIMIT) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "PIN Incorrect\nAttempts Left: " + (ATTEMPT_LIMIT - (attempts - 1)),
+                            Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.show();
+                    pin = "";
+                }
             }
+        }
+        if(attempts > ATTEMPT_LIMIT){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "PIN Incorrect\nClosing Application",
+                    Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();System.exit(0);
         }
     }
 
