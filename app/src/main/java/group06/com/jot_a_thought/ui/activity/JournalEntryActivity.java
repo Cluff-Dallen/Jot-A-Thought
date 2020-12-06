@@ -158,30 +158,6 @@ public class JournalEntryActivity extends AppCompatActivity {
         screenJournalEntry.setText(journalEntry);
     }
 
-    /*@RequiresApi(api = Build.VERSION_CODES.O)
-    public void onClick(View v) throws IOException {
-        sJournalEntry = findViewById(R.id.activity_journal_entry);
-        sTitle = findViewById(R.id.activity_journal_title);
-
-        String journalEntry = sJournalEntry.getText().toString();
-        String title = sTitle.getText().toString();
-
-        File file = new File(getExternalFilesDir(null),title);
-
-
-        try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(journalEntry);
-            writer.flush();
-            writer.close();
-            Log.i("Saved in Journal Entry", "File Saved");
-        } catch (IOException e) {
-            Log.i("Saving in Journal Entry", "Error file not saved");
-            e.printStackTrace();
-        }
-
-        finish();
-    }*/
     public void Delete(View view){
         /*
         EditText journal = (EditText) findViewById(R.id.activity_journal_entry);

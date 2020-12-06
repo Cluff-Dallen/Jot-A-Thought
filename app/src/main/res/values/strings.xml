@@ -3,4 +3,7 @@
     <string name="add_button">add_button</string>
     <string name="jot_a_thought">Jot-A-Thought</string>
     <string name="todo">TODO</string>
+    <string name="createPIN">Please create your 4 digit PIN</string>
+    <string name="enterPIN">Please enter your 4 digit PIN</string>
+    <string name="newPIN">Please enter your new 4 digit PIN</string>
 </resources>

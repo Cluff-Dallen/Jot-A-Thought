@@ -16,6 +16,9 @@ public class JournalDAO extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
+                if(files[i].getName().equals("PIN")){
+                    continue;
+                }
                 journalsNames.add(files[i].getName() + "\n"
                         + sdf.format(files[i].lastModified()));
             }
