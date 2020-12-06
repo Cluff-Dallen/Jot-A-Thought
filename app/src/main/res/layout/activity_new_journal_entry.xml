@@ -30,6 +30,7 @@
             android:hint="Start writing your journal"
             android:inputType="textMultiLine" />
 
+
         //Image feature code here
         <ImageView
             android:id="@+id/imageView"
