@@ -30,5 +30,19 @@
             android:hint="Start writing your journal"
             android:inputType="textMultiLine" />
 
+        //Image feature code here
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/buttonLoadPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Load Picture"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 </ScrollView>

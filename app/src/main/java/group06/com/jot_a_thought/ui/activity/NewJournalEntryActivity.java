@@ -16,11 +16,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import group06.com.jot_a_thought.R;
 
+//Image feature imports here
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.widget.Button;
+import android.widget.ImageView;
+
 public class NewJournalEntryActivity extends AppCompatActivity {
 
     EditText newJournalEntry;
     EditText newTitle;
     String title;
+
+    //Image feature code here
+    ImageView imageView;
+    Button button;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +41,29 @@ public class NewJournalEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_journal_entry);
         setTitle("New Journal Entry");
+
+        //Image feature code here
+        button = (Button)findViewById(R.id.buttonLoadPicture);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+    }
+
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            imageView.setImageURI(imageUri);
+        }
     }
 
     @Override
