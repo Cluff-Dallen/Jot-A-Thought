@@ -1,6 +1,8 @@
 package group06.com.jot_a_thought.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -57,6 +60,14 @@ public class JournalEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_entry);
+
+        // block of code to change actionBar color
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         title = getIntent().getStringExtra("JournalTitle");
         try {
             readFile();

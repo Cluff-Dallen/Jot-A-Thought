@@ -1,6 +1,8 @@
 package group06.com.jot_a_thought.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.AtomicFile;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -32,6 +35,14 @@ public class PinScreen extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pin_journal);
+
+        // block of code to change actionBar color
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         System.out.println("pin Screen");
     }
 

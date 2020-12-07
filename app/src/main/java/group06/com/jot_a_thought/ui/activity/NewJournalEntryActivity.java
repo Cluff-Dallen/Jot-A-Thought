@@ -1,5 +1,7 @@
 package group06.com.jot_a_thought.ui.activity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import group06.com.jot_a_thought.R;
@@ -40,6 +43,14 @@ public class NewJournalEntryActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_journal_entry);
+
+        // block of code to change actionBar color
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         setTitle("New Journal Entry");
 
         //Image feature code here

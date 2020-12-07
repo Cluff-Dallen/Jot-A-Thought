@@ -1,6 +1,8 @@
 package group06.com.jot_a_thought.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +16,7 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -34,21 +37,13 @@ public class JournalList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_journal_list);
-       /* ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    System.out.println("Hello");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
-                } else {
-                    System.out.println("Good Bye!");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-                }
-            }
-        });*/
+        // block of code to change actionBar color
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         FloatingActionButton buttonNewJournal = findViewById(R.id.activity_journal_list_fab_new_journal);
         buttonNewJournal.setOnClickListener(new View.OnClickListener() {
