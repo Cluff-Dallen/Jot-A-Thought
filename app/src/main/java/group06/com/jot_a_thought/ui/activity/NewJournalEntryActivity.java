@@ -54,6 +54,8 @@ public class NewJournalEntryActivity extends AppCompatActivity {
         setTitle("New Journal Entry");
 
         //Image feature code here
+        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView.bringToFront();
         button = (Button)findViewById(R.id.buttonLoadPicture);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

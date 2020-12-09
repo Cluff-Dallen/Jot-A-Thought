@@ -50,7 +50,7 @@ public class JournalEntryActivity extends AppCompatActivity {
     EditText sJournalEntry;
     EditText sTitle;
 
-    //Image feature code here
+    //Image feature code her
     ImageView imageView;
     Button button;
     private static final int PICK_IMAGE = 100;
@@ -76,6 +76,8 @@ public class JournalEntryActivity extends AppCompatActivity {
         }
 
         //Image feature code here
+        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView.bringToFront();
         button = (Button)findViewById(R.id.buttonLoadPicture);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
