@@ -19,13 +19,15 @@
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:layout_marginBottom="26dp"
+        android:textAlignment="center"
         android:clickable="true"
         android:contentDescription="@string/add_button"
         android:focusable="true"
         android:src="@drawable/ic_action_new_journal"
         app:backgroundTint="#3F51B5"
         app:rippleColor="#6C82F8"
-        tools:ignore="MissingClass" />
+        tools:ignore="MissingClass"
+        android:gravity="center_horizontal" />
 
     <!-- <Switch
         android:id="@+id/switch1"
