@@ -55,6 +55,7 @@ public class NewJournalEntryActivity extends AppCompatActivity {
 
         //Image feature code here
         button = (Button)findViewById(R.id.buttonLoadPicture);
+        imageView = (ImageView) findViewById(R.id.imageView);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

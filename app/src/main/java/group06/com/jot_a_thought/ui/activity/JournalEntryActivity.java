@@ -1,5 +1,7 @@
 package group06.com.jot_a_thought.ui.activity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -77,6 +80,7 @@ public class JournalEntryActivity extends AppCompatActivity {
 
         //Image feature code here
         button = (Button)findViewById(R.id.buttonLoadPicture);
+        imageView = (ImageView) findViewById(R.id.imageView);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,13 +136,25 @@ public class JournalEntryActivity extends AppCompatActivity {
 
             finish();
         } else if (itemId == R.id.activity_journal_list_menu_delete) {
-            File file = new File(getExternalFilesDir(null),title);
-            if (file.delete()) {
-                System.out.println("Deleted the file: " + file.getName());
-            } else {
-                System.out.println("Failed to delete the file.");
-            }
-            finish();
+            //Remove dialog
+            new AlertDialog
+                    .Builder(this)
+                    .setTitle("Removing journal")
+                    .setMessage("Are you sure you want to remove this journal?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            File file = new File(getExternalFilesDir(null),title);
+                            if (file.delete()) {
+                                System.out.println("Deleted the file: " + file.getName());
+                            } else {
+                                System.out.println("Failed to delete the file.");
+                            }
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
         return super.onOptionsItemSelected(item);
     }
