@@ -1,5 +1,6 @@
 package group06.com.jot_a_thought.ui.activity;
 
+//Imports
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,13 +19,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,10 +35,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
-
 import group06.com.jot_a_thought.R;
-
-//Image feature imports here
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -52,33 +48,30 @@ public class JournalEntryActivity extends AppCompatActivity {
     String title;
     EditText sJournalEntry;
     EditText sTitle;
-
-    //Image feature code her
     ImageView imageView;
     Button button;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_entry);
 
-        // block of code to change actionBar color
+        //Block of code to change actionBar color
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#3F51B5"));
         actionBar.setBackgroundDrawable(colorDrawable);
 
         title = getIntent().getStringExtra("JournalTitle");
         try {
             readFile();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e){
             e.printStackTrace();
         }
 
-        //Image feature code here
+        //On click allow a photo to be selected from gallary
         imageView = (ImageView)findViewById(R.id.imageView);
         imageView.bringToFront();
         button = (Button)findViewById(R.id.buttonLoadPicture);
@@ -91,7 +84,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         });
     }
 
-    private void openGallery() {
+    private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
     }
@@ -106,22 +99,22 @@ public class JournalEntryActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.activity_journal_entry_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int itemId = item.getItemId();
-        if (itemId == R.id.activity_journal_list_menu_save) {
+        if (itemId == R.id.activity_journal_list_menu_save){
+          
             //readFile();
+            
             sJournalEntry = findViewById(R.id.activity_journal_entry);
             sTitle = findViewById(R.id.activity_journal_title);
-
             String journalEntry = sJournalEntry.getText().toString();
             String title = sTitle.getText().toString();
-
             File file = new File(getExternalFilesDir(null),title);
 
 
@@ -135,19 +128,19 @@ public class JournalEntryActivity extends AppCompatActivity {
                 Log.i("Saving in Journal Entry", "Error file not saved");
                 e.printStackTrace();
             }
-
             finish();
-        } else if (itemId == R.id.activity_journal_list_menu_delete) {
+        } else if (itemId == R.id.activity_journal_list_menu_delete){
+          
             //Remove dialog
             new AlertDialog
                     .Builder(this)
                     .setTitle("Removing journal")
                     .setMessage("Are you sure you want to remove this journal?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener(){
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(DialogInterface dialog, int which){
                             File file = new File(getExternalFilesDir(null),title);
-                            if (file.delete()) {
+                            if (file.delete()){
                                 System.out.println("Deleted the file: " + file.getName());
                             } else {
                                 System.out.println("Failed to delete the file.");
@@ -161,7 +154,7 @@ public class JournalEntryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void readFile() throws FileNotFoundException {
+    void readFile() throws FileNotFoundException{
         TextView screenTitle = findViewById(R.id.activity_journal_title);
         screenTitle.setText(title);
         screenTitle.setFocusable(false);
@@ -173,16 +166,15 @@ public class JournalEntryActivity extends AppCompatActivity {
             BufferedReader br = new BufferedReader(fr);
             String line;
 
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null){
                 journalEntry += line;
             }
             br.close();
         }
-        catch (IOException e) {
+        catch (IOException e){
             Log.i("Reading Error", "Reading Error");
         }
-
-
+        
         TextView screenJournalEntry = findViewById(R.id.activity_journal_entry);
         screenJournalEntry.setText(journalEntry);
     }
@@ -201,8 +193,5 @@ public class JournalEntryActivity extends AppCompatActivity {
             System.out.println("Failed to delete the file.");
         }
         finish();
-
     }
-
 }
-
