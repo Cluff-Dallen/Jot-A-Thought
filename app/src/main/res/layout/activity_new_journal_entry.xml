@@ -12,7 +12,6 @@
         android:orientation="vertical"
         tools:context=".ui.activity.NewJournalEntryActivity">
 
-
         <EditText
             android:id="@+id/activity_journal_list_title"
             android:layout_width="match_parent"
@@ -30,14 +29,14 @@
             android:hint="Start writing your journal"
             android:inputType="textMultiLine" />
 
-
-        //Image feature code here
-
+        //Gallery image goes here
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+        
+        //On click button to open gallery for a photo to be selected
         <Button
             android:id="@+id/buttonLoadPicture"
             android:layout_width="wrap_content"
