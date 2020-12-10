@@ -1,5 +1,6 @@
 package group06.com.jot_a_thought.ui.activity;
 
+//Imports
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,18 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import group06.com.jot_a_thought.R;
-
-//Image feature imports here
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -31,8 +27,6 @@ public class NewJournalEntryActivity extends AppCompatActivity {
     EditText newJournalEntry;
     EditText newTitle;
     String title;
-
-    //Image feature code here
     ImageView imageView;
     Button button;
     private static final int PICK_IMAGE = 100;
@@ -44,29 +38,28 @@ public class NewJournalEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_journal_entry);
 
-        // block of code to change actionBar color
+        //Block of code to change actionBar color
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#3F51B5"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#3F51B5"));
         actionBar.setBackgroundDrawable(colorDrawable);
 
         setTitle("New Journal Entry");
 
-        //Image feature code here
+        //On click open gallery to select photo 
         imageView = (ImageView)findViewById(R.id.imageView);
         imageView.bringToFront();
         button = (Button)findViewById(R.id.buttonLoadPicture);
         imageView = (ImageView) findViewById(R.id.imageView);
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 openGallery();
             }
         });
     }
-
-    private void openGallery() {
+    
+    private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
     }
@@ -81,18 +74,18 @@ public class NewJournalEntryActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.activity_new_journal_entry_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int itemId = item.getItemId();
-        if (itemId == R.id.activity_journal_list_menu_save) {
+        if (itemId == R.id.activity_journal_list_menu_save){
             try {
                 finishJournal();
-            } catch (IOException e) {
+            } catch (IOException e){
                 e.printStackTrace();
             }
         }
@@ -146,6 +139,7 @@ public class NewJournalEntryActivity extends AppCompatActivity {
 
             finish();
         }*/
+    
         public void Delete(View view){
             finish();
             /*
