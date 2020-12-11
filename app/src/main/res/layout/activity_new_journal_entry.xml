@@ -35,7 +35,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-        
+
         //On click button to open gallery for a photo to be selected
         <Button
             android:id="@+id/buttonLoadPicture"
