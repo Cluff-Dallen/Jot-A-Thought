@@ -102,6 +102,7 @@ public class NewJournalEntryActivity extends AppCompatActivity {
         File file = new File(getExternalFilesDir(null),title);
         file.createNewFile();
 
+        //save file
         try {
             FileWriter writer = new FileWriter(file);
             writer.write(journalEntry);
@@ -115,37 +116,8 @@ public class NewJournalEntryActivity extends AppCompatActivity {
 
         finish();
     }
-
-   /*public void onClick(View v) throws IOException {
-            newJournalEntry = findViewById(R.id.activity_journal_list_entry);
-            newTitle = findViewById(R.id.activity_journal_list_title);
-
-            String journalEntry = newJournalEntry.getText().toString();
-            title = newTitle.getText().toString();
-
-            File file = new File(getExternalFilesDir(null),title);
-            file.createNewFile();
-
-            try {
-                FileWriter writer = new FileWriter(file);
-                writer.write(journalEntry);
-                writer.flush();
-                writer.close();
-                Log.i("Saving in New journal", "File Saved");
-            } catch (IOException e) {
-                Log.i("Saving in New Journal", "Error file not saved");
-                e.printStackTrace();
-            }
-
-            finish();
-        }*/
     
         public void Delete(View view){
             finish();
-            /*
-            EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
-            EditText journalTitle = (EditText) findViewById(R.id.activity_journal_title);
-            journal.getText().clear();
-             */
         }
 }

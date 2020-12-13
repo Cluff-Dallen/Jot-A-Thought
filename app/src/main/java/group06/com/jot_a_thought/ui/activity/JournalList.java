@@ -93,12 +93,15 @@ public class JournalList extends AppCompatActivity{
     protected void onResume(){
        
         super.onResume();
+        //populate listview with titles and timestamps
         JournalDAO dao = new JournalDAO();
         String path = getExternalFilesDir(null).toString();
         ListView journalEntries = findViewById(R.id.activity_journal_list_listview);
 
         journalEntries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.allJournals(path)));
 
+
+        //listener to say what item in the list array was clicked on and take off timestamp from title
         journalEntries.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){

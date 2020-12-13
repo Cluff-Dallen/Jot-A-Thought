@@ -47,7 +47,8 @@ public class PinScreen extends AppCompatActivity{
         super.onResume();
         attempts = 0;
         FileReader fr = null;
-        
+
+        //read pin from saved pin file
         try {
             fr = new FileReader(new File(getExternalFilesDir(null), "PIN"));
         } catch (FileNotFoundException e){
@@ -119,7 +120,7 @@ public class PinScreen extends AppCompatActivity{
                 finish();
             }
             
-            //If max attemps hasn't been met, allow another attempt 
+            //If max attempts haven't been met, allow another attempt
             else {
                 if (attempts <= ATTEMPT_LIMIT) {
                     Toast toast = Toast.makeText(getApplicationContext(),
@@ -132,7 +133,7 @@ public class PinScreen extends AppCompatActivity{
             }
         }
         
-        //If pin is incorrect and exceeds the number of allowed attempts
+        //If pin is incorrect and exceeds the number of allowed attempts close app and tell user
         if(attempts > ATTEMPT_LIMIT){
             Toast toast = Toast.makeText(getApplicationContext(),
                     "PIN Incorrect\nClosing Application",

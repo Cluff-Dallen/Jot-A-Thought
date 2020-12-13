@@ -108,8 +108,6 @@ public class JournalEntryActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         int itemId = item.getItemId();
         if (itemId == R.id.activity_journal_list_menu_save){
-          
-            //readFile();
             
             sJournalEntry = findViewById(R.id.activity_journal_entry);
             sTitle = findViewById(R.id.activity_journal_title);
@@ -118,6 +116,7 @@ public class JournalEntryActivity extends AppCompatActivity {
             File file = new File(getExternalFilesDir(null),title);
 
 
+            //write File();
             try {
                 FileWriter writer = new FileWriter(file);
                 writer.write(journalEntry);
@@ -137,6 +136,8 @@ public class JournalEntryActivity extends AppCompatActivity {
                     .setTitle("Removing journal")
                     .setMessage("Are you sure you want to remove this journal?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+
+                        //delete file
                         @Override
                         public void onClick(DialogInterface dialog, int which){
                             File file = new File(getExternalFilesDir(null),title);
@@ -162,6 +163,7 @@ public class JournalEntryActivity extends AppCompatActivity {
 
         FileReader fr = new FileReader(new File(getExternalFilesDir(null), title));
 
+        // read file and display it
         try {
             BufferedReader br = new BufferedReader(fr);
             String line;
@@ -180,11 +182,6 @@ public class JournalEntryActivity extends AppCompatActivity {
     }
 
     public void Delete(View view){
-        /*
-        EditText journal = (EditText) findViewById(R.id.activity_journal_entry);
-        EditText journalTitle = (EditText) findViewById(R.id.activity_journal_title);
-        journal.getText().clear();
-         */
 
         File file = new File(getExternalFilesDir(null),title);
         if (file.delete()) {
